@@ -67,7 +67,7 @@ namespace TextAnalyzer
             var sorted_distinct_words = from word in distinct_words orderby word.Count() select word;
             return sorted_distinct_words;
 
-        }
+        }//GetSortedDistinctWords()
 
         private void PopulateChartData(IOrderedEnumerable<IGrouping<string, string>> sorted_distinct_words)
         {
@@ -82,7 +82,7 @@ namespace TextAnalyzer
                 }//(word_count >= 5)
 
             }
-        }// PopulateChartData
+        }// PopulateChartData()
 
         private void AnalyzeData()
         {
@@ -120,16 +120,18 @@ namespace TextAnalyzer
                 series.Points.Add(series_points[i]);
                 series.Points[i].AxisLabel = series_names[i];
             }
-            
-        }
+
+        }//FillChart()
+
+
         private void frmAnalyzer_Load(object sender, EventArgs e)
         {
             chtReport.Series.Clear();
-        }
+        }//frmAnalyzer_Load()
 
         private void minCount_ValueChanged(object sender, EventArgs e)
         {
-            //MessageBox.Show(minCount.Value.ToString());
+            
             if (chtReport.Series.Count == 0)
             {
                 return;
@@ -137,7 +139,7 @@ namespace TextAnalyzer
 
             AnalyzeData();
             FillChart();
-        }
+        }//minCount_ValueChanged()
 
         private void txtInput_TextChanged(object sender, EventArgs e)
         {
@@ -145,6 +147,6 @@ namespace TextAnalyzer
             {
                 ClearDataPoints();
             }
-        }
+        }//txtInput_TextChanged()
     }//frmAnalyzer
 }//TextAnalyzer
